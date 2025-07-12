@@ -1,0 +1,53 @@
+// ArmageddonHadesEvent.cpp
+#include "ArmageddonHadesEvent.h"
+#include "Engine/World.h"
+
+AArmageddonHadesEvent::AArmageddonHadesEvent()
+{
+    PrimaryActorTick.bCanEverTick = true;
+    ElapsedTime = 0.0f;
+    CurrentForm = EHadesForm::Human;
+}
+
+void AArmageddonHadesEvent::BeginPlay()
+{
+    Super::BeginPlay();
+    // Começa em forma humana
+}
+
+void AArmageddonHadesEvent::Tick(float DeltaTime)
+{
+    Super::Tick(DeltaTime);
+
+    ElapsedTime += DeltaTime;
+    HandleFormLogic();
+}
+
+void AArmageddonHadesEvent::AdvanceForm()
+{
+    // Avança para a próxima forma manualmente ou por condições específicas
+    if (CurrentForm != EHadesForm::Demon)
+    {
+        CurrentForm = static_cast<EHadesForm>(static_cast<uint8>(CurrentForm) + 1);
+    }
+}
+
+void AArmageddonHadesEvent::SummonCompanion()
+{
+    if (CurrentForm == EHadesForm::WithCerberus)
+    {
+        // Spawnar Cerberus
+    }
+    else if (CurrentForm == EHadesForm::WithKraken)
+    {
+        // Spawnar Kraken
+    }
+}
+
+void AArmageddonHadesEvent::HandleFormLogic()
+{
+    // Lógica temporal para transições automáticas de forma
+    float interval = EventDuration / 5;
+    int nextFormIndex = FMath::FloorToInt(ElapsedTime / interval);
+    CurrentForm = static_cast<EHadesForm>(FMath::Clamp(nextFormIndex, 0, 4));
+}
