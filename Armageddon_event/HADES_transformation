@@ -45,3 +45,5 @@ private:
     float ElapsedTime;
     void HandleFormLogic();
 };
+© 2025 Marcelo dos Santos Prado. All rights reserved.
+This content is part of the official patch "The Revenant" from the project "Valhalla Rising – The Parchment".
