@@ -1,0 +1,136 @@
+package event.theRevenant;
+
+import java.util.*;
+
+abstract class HadesPhase {
+    protected String phaseName;
+    protected int health;
+    protected int damage;
+    protected String specialAttack;
+    protected int durationInSeconds;
+
+    public HadesPhase(String phaseName, int health, int damage, String specialAttack, int durationInSeconds) {
+        this.phaseName = phaseName;
+        this.health = health;
+        this.damage = damage;
+        this.specialAttack = specialAttack;
+        this.durationInSeconds = durationInSeconds;
+    }
+
+    public abstract void triggerPhase();
+
+    public String getSpecialAttack() {
+        return specialAttack;
+    }
+
+    public int getDurationInSeconds() {
+        return durationInSeconds;
+    }
+}
+
+class HadesPhaseOne extends HadesPhase {
+    public HadesPhaseOne() {
+        super("Phase One - Human Aspect", 10000, 250, "Shadow Strike", 60);
+    }
+
+    @Override
+    public void triggerPhase() {
+        System.out.println("⚔️ Hades appears in human form.");
+        System.out.println("🖤 Skill used: " + getSpecialAttack());
+        System.out.println("⏱️ Duration: " + getDurationInSeconds() + " seconds.");
+    }
+}
+
+class HadesPhaseTwo extends HadesPhase {
+    public HadesPhaseTwo() {
+        super("Phase Two - Cerberus", 18000, 350, "Infernal Howl", 90);
+    }
+
+    @Override
+    public void triggerPhase() {
+        System.out.println("🔥 Hades returns with the colossal Cerberus.");
+        System.out.println("🗡️ Special attack: " + getSpecialAttack());
+    }
+}
+
+class HadesPhaseThree extends HadesPhase {
+    public HadesPhaseThree() {
+        super("Phase Three - Kraken", 23000, 400, "Abyssal Tentacles", 100);
+    }
+
+    @Override
+    public void triggerPhase() {
+        System.out.println("🌊 Hades summons the Kraken from the deep void.");
+        System.out.println("💥 Special attack: " + getSpecialAttack());
+    }
+}
+
+class HadesPhaseFour extends HadesPhase {
+    public HadesPhaseFour() {
+        super("Phase Four - Giant Form", 28000, 500, "Primordial Stomp", 120);
+    }
+
+    @Override
+    public void triggerPhase() {
+        System.out.println("🌌 Hades becomes a towering celestial entity.");
+        System.out.println("⚡ Special attack: " + getSpecialAttack());
+    }
+}
+
+class HadesPhaseFive extends HadesPhase {
+    public HadesPhaseFive() {
+        super("Phase Five - Possessed by Lucifer", 35000, 700, "Apocalyptic Fury", 150);
+    }
+
+    @Override
+    public void triggerPhase() {
+        System.out.println("👹 Hades is possessed by Lucifer, transforming into a demonic horror.");
+        System.out.println("🔥 Special attack: " + getSpecialAttack());
+    }
+}
+
+public class TheRevenantEvent {
+    private List<HadesPhase> phases;
+    private boolean playerSurvived = true;
+
+    public TheRevenantEvent() {
+        phases = new ArrayList<>();
+        phases.add(new HadesPhaseOne());
+        phases.add(new HadesPhaseTwo());
+        phases.add(new HadesPhaseThree());
+        phases.add(new HadesPhaseFour());
+        phases.add(new HadesPhaseFive());
+    }
+
+    public void startEvent() {
+        System.out.println("\n🌀 Welcome to The Revenant: Armageddon Event 🌀\n");
+        for (HadesPhase phase : phases) {
+            phase.triggerPhase();
+            simulateCombat();
+        }
+        checkRewards();
+    }
+
+    private void simulateCombat() {
+        System.out.println("🎮 Combat simulation running...");
+        try {
+            Thread.sleep(1000); // Simula tempo de batalha
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    private void checkRewards() {
+        if (playerSurvived) {
+            System.out.println("\n🏆 Congratulations! You have survived the Revenant.");
+            System.out.println("🔓 Hades unlocked as Bruiser (Highland).\n🔓 Muriel unlocked as Warlock (Support).\n");
+        } else {
+            System.out.println("☠️ The Revenant claimed your soul. Better luck next time...");
+        }
+    }
+
+    public static void main(String[] args) {
+        TheRevenantEvent event = new TheRevenantEvent();
+        event.startEvent();
+    }
+}
