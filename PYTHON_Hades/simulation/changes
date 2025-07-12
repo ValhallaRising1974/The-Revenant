@@ -1,0 +1,33 @@
+import time
+
+class RevenantEvent:
+    def __init__(self):
+        self.phases = [
+            "Human Form",
+            "Cerberus Form",
+            "Kraken Form",
+            "Giant Form",
+            "Demonic Possession"
+        ]
+        self.current_phase = 0
+
+    def describe_phase(self, phase):
+        descriptions = {
+            "Human Form": "Hades appears as an old, tall, dark-haired man wearing a Greek-engraved robe.",
+            "Cerberus Form": "He summons a colossal Cerberus to aid him in battle.",
+            "Kraken Form": "A massive Kraken rises from the depths to fight beside him.",
+            "Giant Form": "Hades transforms into a towering titan, shaking the battlefield.",
+            "Demonic Possession": "Possessed by Lucifer, he becomes an apocalyptic demon."
+        }
+        return descriptions.get(phase, "Unknown Phase")
+
+    def run_event(self):
+        for phase in self.phases:
+            print(f"Phase activated: {phase}")
+            print(f"→ {self.describe_phase(phase)}\n")
+            time.sleep(1)  # Simula tempo entre fases
+        print("🛡️ Final: All phases completed. Hades becomes a playable Bruiser. Muriel joins as a Support Warlock.")
+
+# Executar simulação
+revenant = RevenantEvent()
+revenant.run_event()
