@@ -1,0 +1,107 @@
+package event.theRevenant;
+
+import java.util.*;
+
+// Classe principal que simula o evento The Revenant
+public class TheRevenantEvent {
+    private List<HadesPhase> phases;
+    private Player player;
+    private int currentPhase;
+
+    public TheRevenantEvent(Player player) {
+        this.player = player;
+        this.currentPhase = 0;
+        this.phases = List.of(
+            new HadesPhase("Phase One - Human Form", 10000, 300, "Shadow Strike", 60),
+            new HadesPhase("Phase Two - With Cerberus", 15000, 400, "Infernal Howl", 75),
+            new HadesPhase("Phase Three - With Kraken", 20000, 500, "Abyssal Tentacles", 90),
+            new HadesPhase("Phase Four - Giant Humanoid", 25000, 600, "Earthquake Smash", 105),
+            new HadesPhase("Phase Five - Demon Possessed", 35000, 800, "Apocalypse Flame", 120)
+        );
+    }
+
+    public void startEvent() {
+        System.out.println("🔥 Starting The Revenant - Patch Armageddon 🔥\n");
+        for (HadesPhase phase : phases) {
+            System.out.println("=== " + phase.getName() + " ===");
+            phase.triggerPhase();
+            player.fight(phase);
+            if (!player.isAlive()) {
+                System.out.println("💀 Player defeated by " + phase.getName());
+                return;
+            }
+            currentPhase++;
+            System.out.println();
+        }
+        unlockRewards();
+    }
+
+    private void unlockRewards() {
+        System.out.println("✅ All phases cleared!");
+        System.out.println("🎖️ Hades unlocked as Bruiser (Highland)!");
+        System.out.println("🎖️ Muriel unlocked as Warlock (Support)!");
+        System.out.println("📜 You received one fragment of the Codex Primordium!");
+    }
+
+    public static void main(String[] args) {
+        Player player = new Player("Herald Champion", 20000);
+        TheRevenantEvent event = new TheRevenantEvent(player);
+        event.startEvent();
+    }
+}
+
+// Classe representando as fases do Hades
+class HadesPhase {
+    private String name;
+    private int hp;
+    private int damage;
+    private String specialAttack;
+    private int durationInSeconds;
+
+    public HadesPhase(String name, int hp, int damage, String specialAttack, int duration) {
+        this.name = name;
+        this.hp = hp;
+        this.damage = damage;
+        this.specialAttack = specialAttack;
+        this.durationInSeconds = duration;
+    }
+
+    public void triggerPhase() {
+        System.out.println("👹 " + name + " appears!");
+        System.out.println("🔺 HP: " + hp + ", ⚔️ Damage: " + damage);
+        System.out.println("🌀 Special Attack: " + specialAttack);
+        System.out.println("⏳ Duration: " + durationInSeconds + " seconds");
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+// Classe representando o jogador
+class Player {
+    private String name;
+    private int hp;
+
+    public Player(String name, int hp) {
+        this.name = name;
+        this.hp = hp;
+    }
+
+    public void fight(HadesPhase phase) {
+        int damageTaken = phase.getDamage();
+        hp -= damageTaken;
+        System.out.println("🛡️ " + name + " took " + damageTaken + " damage!");
+        if (hp > 0) {
+            System.out.println("💪 " + name + " survives with " + hp + " HP remaining.");
+        }
+    }
+
+    public boolean isAlive() {
+        return hp > 0;
+    }
+} 
