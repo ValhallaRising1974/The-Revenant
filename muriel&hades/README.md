@@ -27,3 +27,8 @@ Liés par un destin gravé dans le feu ancien et murmuré à travers l’éther 
 **Hadès**, autrefois dieu des enfers, revient à travers le Cycle du Revenant en tant que guerrier vêtu d’une armure infusée de feu. Son corps est la destruction, son âme est un champ de bataille — et Muriel est la seule voix capable d’apaiser son tourment.
 
 Ensemble, ils représentent le dernier espoir d’un équilibre dans le multivers — une harmonie non née de la paix, mais du sacrifice. Leur présence dans le Patch *Le Revenant* marque la frontière entre l’extinction et la rédemption.
+
+
+
+© 2025 Marcelo dos Santos Prado. All rights reserved.
+This content is part of the official patch "The Revenant" from the project "Valhalla Rising – The Parchment".
