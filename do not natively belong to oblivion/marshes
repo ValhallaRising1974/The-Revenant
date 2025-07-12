@@ -1,0 +1,12 @@
+// Unreal Engine C++ - Área: Oblivion Swamp
+FZoneProperties OblivionSwamp;
+OblivionSwamp.Type = EZoneType::Swamp;
+OblivionSwamp.Visibility = EZoneVisibility::Low;
+OblivionSwamp.MonsterDensity = ESpawnDensity::High;
+OblivionSwamp.ObeliskPresence = true;
+OblivionSwamp.MagicResistanceBoost = true;
+
+
+
+© 2025 Marcelo dos Santos Prado. All rights reserved.
+This content is part of the official patch "The Revenant" from the project "Valhalla Rising – The Parchment".
