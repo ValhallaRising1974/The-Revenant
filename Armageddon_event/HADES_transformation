@@ -1,0 +1,47 @@
+// ArmageddonHadesEvent.h
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "ArmageddonHadesEvent.generated.h"
+
+UENUM(BlueprintType)
+enum class EHadesForm : uint8
+{
+    Human UMETA(DisplayName = "Human Form"),
+    WithCerberus UMETA(DisplayName = "With Cerberus"),
+    WithKraken UMETA(DisplayName = "With Kraken"),
+    Giant UMETA(DisplayName = "Giant Form"),
+    Demon UMETA(DisplayName = "Demonic Form")
+};
+
+UCLASS()
+class VALHALLA_API AArmageddonHadesEvent : public AActor
+{
+    GENERATED_BODY()
+	
+public:	
+    AArmageddonHadesEvent();
+
+protected:
+    virtual void BeginPlay() override;
+
+public:	
+    virtual void Tick(float DeltaTime) override;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Event")
+    float EventDuration = 600.0f; // Tempo total do patch (10 minutos por exemplo)
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hades")
+    EHadesForm CurrentForm;
+
+    UFUNCTION(BlueprintCallable, Category = "Hades")
+    void AdvanceForm();
+
+    UFUNCTION(BlueprintCallable, Category = "Hades")
+    void SummonCompanion();
+
+private:
+    float ElapsedTime;
+    void HandleFormLogic();
+};
