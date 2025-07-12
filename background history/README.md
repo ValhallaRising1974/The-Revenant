@@ -47,3 +47,5 @@ Si Lucifer est défait une quatrième fois, il sera banni, et l’âme d’Hadè
 Mais s’il triomphe… il deviendra éternel.
 
 ---
+© 2007 Marcelo dos Santos Prado. All rights reserved.
+This content is part of the official patch "The Revenant" from the project "Valhalla Rising – The Parchment".
